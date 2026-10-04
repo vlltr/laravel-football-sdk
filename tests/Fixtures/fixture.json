@@ -1,0 +1,63 @@
+{
+  "data": {
+    "id": 422841891,
+    "league": { "id": 1385749887, "name": "USA USL Cup" },
+    "teams": {
+      "home": { "id": 659461348, "name": "Birmingham Legion FC" },
+      "away": { "id": 2095841428, "name": "Tulsa" }
+    },
+    "kickoff_utc": "2026-07-12T00:00:00+00:00",
+    "kickoff_ts": 1783814400,
+    "status": "finished",
+    "status_reason": null,
+    "status_code": "full",
+    "round": 12,
+    "league_season_id": 2288481746,
+    "goals": { "home": 3, "away": 1, "half_home": 1, "half_away": 1 },
+    "corners": { "home": 13, "away": 4, "half_home": 6, "half_away": 2 },
+    "cards": {
+      "home": { "yellow": 1, "red": 0 },
+      "away": { "yellow": 4, "red": 0 }
+    },
+    "odds": {
+      "1x2": {
+        "opening": { "home": 1.53, "draw": 3.75, "away": 5.0 },
+        "closing": { "home": 1.18, "draw": 5.5, "away": 15.0 },
+        "inplay": null
+      },
+      "asian_handicap": { "opening": -0.5, "closing": -0.75, "inplay": -1.0 },
+      "goal_line": { "opening": 2.5, "closing": 2.75, "inplay": 3.0 },
+      "corner_line": { "opening": 9.5, "closing": 10, "inplay": 10.5 },
+      "corner_asian": { "opening": 0, "closing": -0.5, "inplay": null },
+      "card_line": { "opening": 4.5, "closing": 5, "inplay": null },
+      "card_asian": { "opening": 0, "closing": 0, "inplay": null },
+      "asian_handicap_half": { "closing": -0.25, "inplay": null },
+      "goal_line_half": { "closing": 1.25, "inplay": 1.5 },
+      "corner_line_half": { "closing": 4.5, "inplay": 5 }
+    },
+    "statistics": {
+      "attacks": { "home": 24, "away": 30 },
+      "dangerous_attacks": { "home": 11, "away": 14 },
+      "shots_on_target": { "home": 3, "away": 5 },
+      "shots_off_target": { "home": 4, "away": 2 },
+      "possession": { "home": 51, "away": 49 },
+      "first_half": {
+        "attacks": { "home": 15, "away": 18 },
+        "dangerous_attacks": { "home": 6, "away": 8 },
+        "shots_on_target": { "home": 1, "away": 2 },
+        "shots_off_target": { "home": 2, "away": 0 },
+        "possession": { "home": 50, "away": 50 }
+      }
+    },
+    "events": [
+      { "type": "goal", "minute": 20, "team": "away", "count": 1 },
+      { "type": "corner", "minute": 23, "team": "home", "count": 1 },
+      { "type": "yellow_card", "minute": 41, "team": "home", "count": 1 },
+      { "type": "period_score", "minute": null, "team": null, "period": "first_half", "score": { "home": 1, "away": 1 } },
+      { "type": "missed_penalty", "minute": 55, "team": "away" },
+      { "type": "substitution", "minute": 63, "team": "away", "player_in": "R. Silva", "player_out": "J. Costa" },
+      { "type": "red_card", "minute": 78, "team": "away" },
+      { "type": "period_score", "minute": null, "team": null, "period": "second_half", "score": { "home": 3, "away": 1 } }
+    ]
+  }
+}

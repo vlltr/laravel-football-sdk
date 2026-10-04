@@ -1,0 +1,21 @@
+{
+  "data": {
+    "id": 422841891,
+    "league": { "id": 1385749887, "name": "USA USL Cup" },
+    "teams": {
+      "home": { "id": 659461348, "name": "Birmingham Legion FC" },
+      "away": { "id": 2095841428, "name": "Tulsa" }
+    },
+    "kickoff_utc": "2026-07-12T00:00:00+00:00",
+    "kickoff_ts": 1783814400,
+    "status": "finished",
+    "status_reason": null,
+    "status_code": "full",
+    "goals": { "home": 3, "away": 1 },
+    "corners": { "home": 13, "away": 4 },
+    "cards": {
+      "home": { "yellow": 1, "red": 0 },
+      "away": { "yellow": 4, "red": 0 }
+    }
+  }
+}
