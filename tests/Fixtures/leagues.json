@@ -1,0 +1,25 @@
+{
+  "data": [
+    {
+      "id": 3120672213,
+      "name": "Premier League",
+      "short_name": "EPL",
+      "country": { "code": "GB-ENG", "name": "England" },
+      "is_popular": true,
+      "has_standings": true,
+      "last_fixture_utc": "2026-09-14T19:00:00+00:00",
+      "last_fixture_ts": 1789412400
+    },
+    {
+      "id": 1810150156,
+      "name": "La Liga",
+      "short_name": "LL",
+      "country": { "code": "ES", "name": "Spain" },
+      "is_popular": true,
+      "has_standings": true,
+      "last_fixture_utc": "2026-09-13T20:00:00+00:00",
+      "last_fixture_ts": 1789329600
+    }
+  ],
+  "pagination": { "page": 1, "per_page": 50, "count": 2, "has_more": false }
+}

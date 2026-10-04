@@ -1,0 +1,15 @@
+{
+  "data": {
+    "league_id": 3120672213,
+    "type": "card",
+    "table": [
+      {
+        "position": 1,
+        "team": { "id": 2, "name": "Shirak" },
+        "played": 13,
+        "total_for": 32,
+        "average_for": 2.46
+      }
+    ]
+  }
+}

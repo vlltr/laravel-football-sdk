@@ -1,0 +1,17 @@
+{
+  "data": {
+    "id": 3120672213,
+    "name": "Premier League",
+    "short_name": "EPL",
+    "country": { "code": "GB-ENG", "name": "England" },
+    "is_popular": true,
+    "has_standings": true,
+    "last_fixture_utc": "2026-09-14T19:00:00+00:00",
+    "last_fixture_ts": 1789412400,
+    "seasons": [
+      { "season": "26/27", "current": true },
+      { "season": "25/26", "current": false },
+      { "season": "24/25", "current": false }
+    ]
+  }
+}

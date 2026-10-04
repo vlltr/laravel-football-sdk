@@ -1,0 +1,28 @@
+{
+  "data": {
+    "league_id": 3120672213,
+    "season": "26/27",
+    "league_season_id": 2288481746,
+    "type": "corner",
+    "source": "feed",
+    "round": 38,
+    "table": [
+      {
+        "position": 1,
+        "team": { "id": 3815543475, "name": "Arsenal" },
+        "played": 38,
+        "total_for": 251,
+        "total_against": 148,
+        "average_for": 6.6,
+        "average_against": 3.9,
+        "points": 86,
+        "first_half": {
+          "total_for": 118,
+          "total_against": 71,
+          "average_for": 3.1,
+          "average_against": 1.9
+        }
+      }
+    ]
+  }
+}

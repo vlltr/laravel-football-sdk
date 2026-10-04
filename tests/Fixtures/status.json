@@ -1,0 +1,11 @@
+{
+  "data": {
+    "plan": "pro",
+    "limits": {
+      "rate_limit": 10,
+      "rate_window_seconds": 60,
+      "burst_per_minute": null
+    },
+    "usage": { "today": 124 }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "data": {
+    "league_id": 3120672213,
+    "type": "total",
+    "round": 38,
+    "table": [
+      {
+        "position": 1,
+        "team": { "id": 1, "name": "Pyunik Yerevan" },
+        "played": 36,
+        "win": 24,
+        "draw": 10,
+        "lose": 2,
+        "points": 82
+      }
+    ]
+  }
+}
