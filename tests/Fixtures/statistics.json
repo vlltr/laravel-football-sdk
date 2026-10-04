@@ -1,0 +1,20 @@
+{
+  "success": 1,
+  "data": {
+    "fixture_id": 422841891,
+    "statistics": {
+      "attacks": { "home": 112, "away": 88 },
+      "dangerous_attacks": { "home": 54, "away": 39 },
+      "shots_on_target": { "home": 6, "away": 3 },
+      "shots_off_target": { "home": 7, "away": 5 },
+      "possession": { "home": 58, "away": 42 },
+      "first_half": {
+        "attacks": { "home": 47, "away": 40 },
+        "dangerous_attacks": { "home": 23, "away": 18 },
+        "shots_on_target": { "home": 2, "away": 1 },
+        "shots_off_target": { "home": 3, "away": 2 },
+        "possession": { "home": 55, "away": 45 }
+      }
+    }
+  }
+}

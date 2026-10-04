@@ -1,0 +1,16 @@
+{
+  "success": 1,
+  "data": {
+    "fixture_id": 422841891,
+    "events": [
+      { "type": "corner", "minute": 3, "team": "home", "count": 1 },
+      { "type": "goal", "minute": 4, "team": "home", "count": 1 },
+      { "type": "yellow_card", "minute": 27, "team": "away", "count": 1 },
+      { "type": "period_score", "minute": null, "team": null, "period": "first_half", "score": { "home": 1, "away": 0 } },
+      { "type": "missed_penalty", "minute": 49, "team": "away" },
+      { "type": "substitution", "minute": 60, "team": "home", "player_in": "R. Lewis", "player_out": "J. Cole" },
+      { "type": "red_card", "minute": 78, "team": "away" },
+      { "type": "period_score", "minute": null, "team": null, "period": "second_half", "score": { "home": 2, "away": 1 } }
+    ]
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "data": [{ "code": "WORLD", "name": "International" }],
+  "pagination": { "page": 1, "per_page": 50, "count": 1, "has_more": false }
+}
