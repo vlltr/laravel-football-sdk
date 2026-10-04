@@ -1,0 +1,9 @@
+services:
+  sdk:
+    build:
+      context: .
+      args:
+        PHP_VERSION: ${PHP_VERSION:-8.3}
+    volumes:
+      - .:/app
+    working_dir: /app
