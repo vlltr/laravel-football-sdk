@@ -9,20 +9,16 @@ use Throwable;
 
 class FootballException extends RuntimeException
 {
-    public $code;
-
     public function __construct(
         string $message,
         public ?int $status = null,
         public ?string $type = null,
-        ?string $code = null,
+        public ?string $errorCode = null,
         public ?string $param = null,
         public ?string $docUrl = null,
         public ?string $requestId = null,
         ?Throwable $previous = null,
     ) {
         parent::__construct($message, 0, $previous);
-
-        $this->code = $code;
     }
 }

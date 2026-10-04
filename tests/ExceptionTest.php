@@ -15,14 +15,14 @@ class ExceptionTest extends TestCase
             'No fixture with id 99999.',
             status: 404,
             type: 'invalid_request',
-            code: 'fixture_not_found',
+            errorCode: 'fixture_not_found',
             param: 'id',
             docUrl: 'https://5dollarfootballapi.com/docs/errors',
             requestId: 'req_a1b2c3d4e5f6',
         );
 
         $this->assertSame('No fixture with id 99999.', $exception->getMessage());
-        $this->assertSame('fixture_not_found', $exception->code);
+        $this->assertSame('fixture_not_found', $exception->errorCode);
         $this->assertSame('req_a1b2c3d4e5f6', $exception->requestId);
     }
 
@@ -31,7 +31,7 @@ class ExceptionTest extends TestCase
         $exception = new RateLimitException(
             'Slow down.',
             status: 429,
-            code: 'rate_limited',
+            errorCode: 'rate_limited',
             retryAfter: 30,
             limit: 10,
             remaining: 0,
