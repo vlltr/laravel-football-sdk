@@ -11,6 +11,11 @@ class FootballServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(__DIR__.'/../config/football.php', 'football');
+
+        $this->app->singleton(FootballManager::class);
+        $this->app->singleton(Football::class, function ($app) {
+            return $app->make(FootballManager::class)->client();
+        });
     }
 
     public function boot(): void
