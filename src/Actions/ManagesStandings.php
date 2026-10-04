@@ -22,6 +22,6 @@ trait ManagesStandings
             'lang' => $lang,
         ]));
 
-        return Standings::fromArray($response['data']);
+        return Standings::fromArray($this->dataArray($response));
     }
 }

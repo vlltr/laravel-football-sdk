@@ -6,6 +6,7 @@ namespace FootballApi\Support;
 
 use Carbon\CarbonImmutable;
 use FootballApi\Exceptions\FootballException;
+use Throwable;
 
 class Hydrator
 {
@@ -60,7 +61,13 @@ class Hydrator
                 throw self::invalid("Invalid {$key}.");
             }
 
-            return array_map(fn ($item) => $spec['list']::fromArray($item), array_values($value));
+            return array_map(function ($item) use ($key, $spec) {
+                if (! is_array($item)) {
+                    throw self::invalid("Invalid item in {$key}.");
+                }
+
+                return $spec['list']::fromArray($item);
+            }, array_values($value));
         }
 
         if (isset($spec['class'])) {
@@ -71,14 +78,33 @@ class Hydrator
             return $spec['class']::fromArray($value);
         }
 
-        return match ($spec['type'] ?? null) {
+        $type = $spec['type'] ?? null;
+
+        if (in_array($type, ['int', 'float', 'string', 'bool'], true) && ! is_scalar($value)) {
+            throw self::invalid("Invalid {$key}.");
+        }
+
+        return match ($type) {
             'int' => (int) $value,
             'float' => (float) $value,
             'string' => (string) $value,
             'bool' => (bool) $value,
-            'datetime' => CarbonImmutable::parse($value),
+            'datetime' => self::datetime($key, $value),
             default => $value,
         };
+    }
+
+    private static function datetime(string $key, mixed $value): CarbonImmutable
+    {
+        if (! is_string($value)) {
+            throw self::invalid("Invalid {$key}.");
+        }
+
+        try {
+            return CarbonImmutable::parse($value);
+        } catch (Throwable) {
+            throw self::invalid("Invalid {$key}.");
+        }
     }
 
     private static function camel(string $key): string

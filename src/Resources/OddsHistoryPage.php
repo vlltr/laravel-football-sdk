@@ -36,17 +36,6 @@ final readonly class OddsHistoryPage
         ];
     }
 
-    /** @return array<string, array<string, mixed>> */
-    public static function paginationKeys(): array
-    {
-        return [
-            'page' => ['type' => 'int', 'required' => true],
-            'per_page' => ['type' => 'int', 'required' => true, 'as' => 'perPage'],
-            'count' => ['type' => 'int', 'required' => true],
-            'has_more' => ['type' => 'bool', 'required' => true, 'as' => 'hasMore'],
-        ];
-    }
-
     /**
      * @param  array<string, mixed>  $data
      * @param  array<string, mixed>  $pagination
@@ -56,7 +45,7 @@ final readonly class OddsHistoryPage
     {
         return new self(
             ...Hydrator::read($data, self::keys()),
-            ...Hydrator::read($pagination, self::paginationKeys()),
+            ...Hydrator::read($pagination, Page::paginationKeys()),
             next: $next,
         );
     }

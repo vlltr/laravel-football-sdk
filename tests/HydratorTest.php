@@ -8,6 +8,7 @@ use FootballApi\Exceptions\FootballException;
 use FootballApi\Resources\Scoreline;
 use FootballApi\Resources\Team;
 use FootballApi\Support\Contract;
+use FootballApi\Support\Hydrator;
 use PHPUnit\Framework\AssertionFailedError;
 
 class HydratorTest extends TestCase
@@ -39,6 +40,36 @@ class HydratorTest extends TestCase
         } catch (FootballException $exception) {
             $this->assertSame('invalid_response', $exception->errorCode);
             throw $exception;
+        }
+    }
+
+    public function test_list_item_that_is_not_an_array_throws_invalid_response(): void
+    {
+        try {
+            Hydrator::read(['teams' => ['nope']], ['teams' => ['list' => Team::class, 'required' => true]]);
+            $this->fail('Expected FootballException.');
+        } catch (FootballException $exception) {
+            $this->assertSame('invalid_response', $exception->errorCode);
+        }
+    }
+
+    public function test_unparseable_datetime_throws_invalid_response(): void
+    {
+        try {
+            Hydrator::read(['at' => 'not a date at all'], ['at' => ['type' => 'datetime', 'required' => true]]);
+            $this->fail('Expected FootballException.');
+        } catch (FootballException $exception) {
+            $this->assertSame('invalid_response', $exception->errorCode);
+        }
+    }
+
+    public function test_non_scalar_int_throws_invalid_response(): void
+    {
+        try {
+            Team::fromArray(['id' => [1], 'name' => 'Arsenal']);
+            $this->fail('Expected FootballException.');
+        } catch (FootballException $exception) {
+            $this->assertSame('invalid_response', $exception->errorCode);
         }
     }
 

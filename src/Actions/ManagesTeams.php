@@ -13,6 +13,6 @@ trait ManagesTeams
     {
         $response = $this->get('teams/'.$id, Query::make(['lang' => $lang]), 'team');
 
-        return Team::fromArray($response['data']);
+        return Team::fromArray($this->dataArray($response));
     }
 }

@@ -10,8 +10,10 @@ use FootballApi\Exceptions\InvalidRequestException;
 use FootballApi\Exceptions\NotFoundException;
 use FootballApi\Exceptions\PlanException;
 use FootballApi\Exceptions\RateLimitException;
+use FootballApi\Football;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
 class HttpTransportTest extends TestCase
@@ -334,6 +336,27 @@ class HttpTransportTest extends TestCase
 
         $this->assertSame($first, $second);
         Http::assertSentCount(1);
+
+        $key = config('football.cache.prefix').'|'.hash('sha256', 'fb_live_test').'|GET|v1/countries|'
+            .json_encode([]);
+        $stored = Cache::store()->get($key);
+
+        $this->assertIsArray($stored);
+        $this->assertArrayHasKey('data', $stored);
+        $this->assertArrayHasKey('pagination', $stored);
+        $this->assertSame([['id' => 1]], $stored['data']);
+    }
+
+    public function test_missing_data_on_single_resource_is_invalid_response(): void
+    {
+        Http::fake(['*' => Http::response(['success' => 1])]);
+
+        try {
+            (new Football('fb_live_test', (string) config('football.base_url'), 10))->status();
+            $this->fail('Expected FootballException.');
+        } catch (FootballException $e) {
+            $this->assertSame('invalid_response', $e->errorCode);
+        }
     }
 
     public function test_cache_key_includes_api_key(): void

@@ -19,7 +19,7 @@ trait ManagesOdds
             'market' => $market,
         ]));
 
-        return FixtureOddsBoard::fromArray($response['data']);
+        return FixtureOddsBoard::fromArray($this->dataArray($response));
     }
 
     public function fixtureOddsHistory(
@@ -43,7 +43,7 @@ trait ManagesOdds
         $paginationPage = (int) ($response['pagination']['page'] ?? 1);
 
         return OddsHistoryPage::fromArray(
-            $response['data'],
+            $this->dataArray($response),
             $response['pagination'],
             fn () => $this->fixtureOddsHistory($id, $market, $bookmaker, $paginationPage + 1, $perPage),
         );

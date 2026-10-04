@@ -35,6 +35,73 @@ Publish the config file if you need to change the defaults:
 php artisan vendor:publish --tag=football-config
 ```
 
+### Config keys
+
+`config/football.php` defines these keys:
+
+- `api_key`
+- `base_url`
+- `timeout`
+- `cache.enabled`
+- `cache.store`
+- `cache.prefix`
+- `cache.ttl.*` (`countries`, `bookmakers`, `leagues`, `league`, `team`)
+- `retry.max_wait`
+- `retry.times`
+
+A 429 response sleeps and retries only when `Retry-After` is at most `retry.max_wait` seconds (default 2). Otherwise it throws `RateLimitException` immediately.
+
+## Methods
+
+Each method calls one endpoint, relative to `base_url`:
+
+| Method | Path |
+| --- | --- |
+| `status()` | `status` |
+| `fixtures()` | `fixtures` |
+| `fixture($id)` | `fixtures/{id}` |
+| `leagueFixtures($id)` | `leagues/{id}/fixtures` |
+| `teamFixtures($id)` | `teams/{id}/fixtures` |
+| `fixtureEvents($id)` | `fixtures/{id}/events` |
+| `fixtureStatistics($id)` | `fixtures/{id}/statistics` |
+| `fixtureOdds($id)` | `fixtures/{id}/odds` |
+| `fixtureOddsHistory($id, $market)` | `fixtures/{id}/odds/history` |
+| `standings($league)` | `standings` |
+| `leagues()` | `leagues` |
+| `league($id)` | `leagues/{id}` |
+| `team($id)` | `teams/{id}` |
+| `countries()` | `countries` |
+| `bookmakers()` | `bookmakers` |
+
+## Pagination
+
+Paged methods return a `Page`. Call `$page->next()` to get the next page, or `null` when there are no more.
+
+```php
+$page = Football::fixtures(status: 'live');
+
+while ($page !== null) {
+    foreach ($page->items as $fixture) {
+        // ...
+    }
+
+    $page = $page->next();
+}
+```
+
+## Errors
+
+Every failure throws a subclass of `FootballException`, so catching `FootballException` covers them all:
+
+- `FootballException`
+- `AuthenticationException`
+- `PlanException`
+- `NotFoundException`
+- `InvalidRequestException`
+- `RateLimitException`
+
+A response that is missing expected data or has the wrong shape throws `FootballException` with the error code `invalid_response`.
+
 ## Attribution
 
 Free, Community, and Education public apps must attribute 5DollarFootballAPI in the app itself. This package does not add attribution for you.

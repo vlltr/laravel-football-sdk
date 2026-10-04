@@ -37,6 +37,6 @@ trait ManagesCatalog
     {
         $response = $this->get('bookmakers', [], 'bookmakers');
 
-        return array_map(Bookmaker::fromArray(...), array_values($response['data']));
+        return array_map(Bookmaker::fromArray(...), array_values($this->dataArray($response)));
     }
 }

@@ -53,7 +53,7 @@ trait ManagesFixtures
     {
         $response = $this->get('fixtures/'.$id, Query::make(['include' => $include, 'lang' => $lang]));
 
-        return Fixture::fromArray($response['data']);
+        return Fixture::fromArray($this->dataArray($response));
     }
 
     /**
@@ -126,11 +126,11 @@ trait ManagesFixtures
 
     public function fixtureEvents(int $id): FixtureEvents
     {
-        return FixtureEvents::fromArray($this->get('fixtures/'.$id.'/events')['data']);
+        return FixtureEvents::fromArray($this->dataArray($this->get('fixtures/'.$id.'/events')));
     }
 
     public function fixtureStatistics(int $id): FixtureStatistics
     {
-        return FixtureStatistics::fromArray($this->get('fixtures/'.$id.'/statistics')['data']);
+        return FixtureStatistics::fromArray($this->dataArray($this->get('fixtures/'.$id.'/statistics')));
     }
 }

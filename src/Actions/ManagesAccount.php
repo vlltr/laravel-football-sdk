@@ -10,6 +10,6 @@ trait ManagesAccount
 {
     public function status(): AccountStatus
     {
-        return AccountStatus::fromArray($this->get('status')['data']);
+        return AccountStatus::fromArray($this->dataArray($this->get('status')));
     }
 }

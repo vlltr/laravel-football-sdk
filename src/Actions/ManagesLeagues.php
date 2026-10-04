@@ -50,6 +50,6 @@ trait ManagesLeagues
     {
         $response = $this->get('leagues/'.$id, Query::make(['lang' => $lang]), 'league');
 
-        return League::fromArray($response['data']);
+        return League::fromArray($this->dataArray($response));
     }
 }

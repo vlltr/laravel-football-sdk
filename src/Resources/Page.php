@@ -40,7 +40,7 @@ final readonly class Page
             throw new FootballException('The API returned an unreadable page.', errorCode: 'invalid_response');
         }
 
-        $meta = Hydrator::read($pagination, OddsHistoryPage::paginationKeys());
+        $meta = Hydrator::read($pagination, self::paginationKeys());
 
         return new self(
             array_map($map, $data),
@@ -50,6 +50,17 @@ final readonly class Page
             $meta['hasMore'],
             fn (): self => $fetch($meta['page'] + 1),
         );
+    }
+
+    /** @return array<string, array<string, mixed>> */
+    public static function paginationKeys(): array
+    {
+        return [
+            'page' => ['type' => 'int', 'required' => true],
+            'per_page' => ['type' => 'int', 'required' => true, 'as' => 'perPage'],
+            'count' => ['type' => 'int', 'required' => true],
+            'has_more' => ['type' => 'bool', 'required' => true, 'as' => 'hasMore'],
+        ];
     }
 
     /** @return ?self<T> */

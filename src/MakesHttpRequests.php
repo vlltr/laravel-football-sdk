@@ -110,6 +110,19 @@ trait MakesHttpRequests
         return $payload;
     }
 
+    /**
+     * @param  array{data: mixed, pagination: ?array<string, mixed>}  $response
+     * @return array<mixed>
+     */
+    protected function dataArray(array $response): array
+    {
+        if (! is_array($response['data'])) {
+            throw new FootballException('The API response had no data.', errorCode: 'invalid_response');
+        }
+
+        return $response['data'];
+    }
+
     /** @param  array<string, mixed>  $body */
     private function errorFor(int $status, array $body): FootballException
     {
